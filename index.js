@@ -6,69 +6,57 @@ function getComputerChoice() {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-//to test:
-// let result = getComputerChoice();
-// console.log(result);
 function game() {
   while (playerScore < 5 && computerScore < 5) {
-    const playerSelection = prompt("Choose: ROCK, PAPER, or SCISSORS");
+    let playerSelect = prompt("Choose: ROCK, PAPER, or SCISSORS");
+    if (playerSelect === null) {
+      alert("Hey don't leave me :(");
+      return;
+    }
+    let playerSelection =
+      playerSelect.charAt(0).toUpperCase() +
+      playerSelect.slice(1).toLowerCase();
     if (
-      playerSelection === null ||
-      !["rock", "paper", "scissors"].includes(playerSelection.toLowerCase())
+      playerSelection !== "Rock" &&
+      playerSelection !== "Paper" &&
+      playerSelection !== "Scissors"
     ) {
-      alert("No. Try again.");
+      alert("nope, try again.");
       continue;
     }
     const computerSelection = getComputerChoice();
-    alert(
-      playRound(
-        playerSelection,
-        computerSelection
-      )
-    );
+    alert(playRound(playerSelection, computerSelection));
   }
   if (playerScore === 5) {
     alert("You won the game!");
-  } else if (computerScore ===5){
-    ("You lost the game. Better luck next time.");
+  } else if (computerScore === 5) {
+    alert("You lost the game. Better luck next time.");
   }
 }
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "It's a tie!";
+    return `It's a tie! Score: ${playerScore}:${computerScore}`;
   } else if (
-    (playerSelection === "rock" && computerSelection === "Scissors") ||
-    (playerSelection === "paper" && computerSelection === "Rock") ||
-    (playerSelection === "scissors" && computerSelection === "Paper")
+    (playerSelection === "Rock" && computerSelection === "Scissors") ||
+    (playerSelection === "Paper" && computerSelection === "Rock") ||
+    (playerSelection === "Scissors" && computerSelection === "Paper")
   ) {
     playerScore += 1;
-    return `You win this round! ${playerSelection} beats ${computerSelection}`;
+    return `You win this round! ${playerSelection} beats ${computerSelection}! Score: ${playerScore}:${computerScore}`;
   } else {
     computerScore += 1;
-    return `You lost this round! ${computerSelection} beats ${playerSelection}`;
+    return `You lost this round! ${computerSelection} beats ${playerSelection}! Score: ${playerScore}:${computerScore}`;
   }
 }
 game();
 
+//to test:
+// let result = getComputerChoice();
+// console.log(result);
+
 //console.log(playRound(playerSelection, computerSelection)
 
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection === computerSelection) {
-//     return "It's a tie!";
-//   } else if (playerSelection === "rock" && computerSelection === "Scissors") {
-//     playerScore += 1;
-//     return "You win this round! ${playerSelection} beats ${computerSelection}";
-//   } else if (playerSelection === "paper" && computerSelection === "Rock") {
-//     playerScore += 1;
-//     return "You win this round! ${playerSelection} beats ${computerSelection}";
-//   } else if (playerSelection === "scissors" && computerSelection === "Paper") {
-//     playerScore += 1;
-//     return "You win this round! ${playerSelection} beats ${computerSelection}";
-//   } else {
-//     computerScore += 1;
-//     return "You lost this round! ${computerSelection} beats ${playerSelection}";
-//   }
-// }
+//need to fix tie mechanic it is case sensitive atm
 
-
-need to fix tie mechanic it is case sensitive atm
+//if you hit okay it add a default otherwise it goes without you
+//now even banana counts against you smh
