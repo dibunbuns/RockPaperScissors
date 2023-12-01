@@ -7,33 +7,43 @@ window.addEventListener("DOMContentLoaded", (e) => {
     return options[Math.floor(Math.random() * options.length)];
   }
 
-  function game() {
-    while (playerScore < 5 && computerScore < 5) {
-      let playerSelect = prompt("Choose: ROCK, PAPER, or SCISSORS");
-      if (!playerSelect) {
-        alert("Hey don't leave me :(");
-        return;
-      }
-      let playerSelection =
-        playerSelect.charAt(0).toUpperCase() +
-        playerSelect.slice(1).toLowerCase();
-      if (
-        playerSelection !== "Rock" &&
-        playerSelection !== "Paper" &&
-        playerSelection !== "Scissors"
-      ) {
-        alert("nope, try again.");
-        continue;
-      }
-      const computerSelection = getComputerChoice();
-      alert(playRound(playerSelection, computerSelection));
+  // function game() {
+  //   //while (playerScore < 5 && computerScore < 5) {
+  //     let playerSelect = prompt("Choose: ROCK, PAPER, or SCISSORS");
+  //     if (!playerSelect) {
+  //       alert("Hey don't leave me :(");
+  //       return;
+  //     }
+  //     let playerSelection =
+  //       playerSelect.charAt(0).toUpperCase() +
+  //       playerSelect.slice(1).toLowerCase();
+  //     if (
+  //       playerSelection !== "Rock" &&
+  //       playerSelection !== "Paper" &&
+  //       playerSelection !== "Scissors"
+  //     ) {
+  //       alert("nope, try again.");
+  //       continue;
+  //     }
+  //     const computerSelection = getComputerChoice();
+  //     alert(playRound(playerSelection, computerSelection));
+  //   }
+  //    if (playerScore === 5) {
+  //      alert("You won the game!");
+  //    } else if (computerScore === 5) {
+  //      alert("You lost the game. Better luck next time.");
+  //    }
+  // }
+  function clickListener(event) {
+    if (event.target.tagName != "BUTTON") {
+      return;
     }
-    if (playerScore === 5) {
-      alert("You won the game!");
-    } else if (computerScore === 5) {
-      alert("You lost the game. Better luck next time.");
-    }
+    const playerSelection = event.target.id;
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
   }
+  document.getElementById(".buttons").addEventListener("click", clickListener);
+
   function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
       return `It's a tie! Score: ${playerScore}:${computerScore}`;
