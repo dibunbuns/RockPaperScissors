@@ -3,12 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="index.js" defer></script>
+    <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
     <title>RockPaperScissors</title>
   </head>
   <body>
-    Rock Paper Scissors
+    <header><h1>Welcome to my game of Rock Paper Scissors</h1></header>
+    <div class="scoreboard">
+      <div id="user-label" class="badge">User</div>
+      <div id="computer-label" class="badge">Comp</div>
+      <span id="user-score">0</span>:<span id="computer-score">0</span>
+    </div>
+
+    <div class="choices">
+      <div class="choice" id="rock">
+        <img src="IMG/rock.png" alt="" />
+      </div>
+      <div class="choice" id="paper">
+        <img src="IMG/paper.png" alt="" />
+      </div>
+      <div class="choice" id="scissors">
+        <img src="IMG/scissor.png" alt="" />
+      </div>
+    </div>
+
+    <div class="results">
+      <p>Let's see who will win!</p>
+    </div>
+
+    <p id="action-message">Click on an image to begin.</p>
   </body>
 </html>
 
