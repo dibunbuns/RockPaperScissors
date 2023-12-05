@@ -34,17 +34,20 @@ window.addEventListener("DOMContentLoaded", (e) => {
   //      alert("You lost the game. Better luck next time.");
   //    }
   // }
-  function clickListener(event) {
-    if (event.target.tagName != "BUTTON") {
-      return;
-    }
-    const playerSelection = event.target.id;
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-  }
-  document.getElementById(".buttons").addEventListener("click", clickListener);
 
   function playRound(playerSelection, computerSelection) {
+    function clickListener(event) {
+      if (event.target.tagName != "BUTTON") {
+        return;
+      }
+      const playerSelection = event.target.id;
+      const computerSelection = getComputerChoice();
+      playRound(playerSelection, computerSelection);
+    }
+    document
+      .getElementById(".buttons")
+      .addEventListener("click", clickListener);
+
     if (playerSelection === computerSelection) {
       return `It's a tie! Score: ${playerScore}:${computerScore}`;
     } else if (
