@@ -32,9 +32,7 @@ function win(userChoice, computerChoice) {
     computerChoice
   )}. You win!`;
   userChoice_div.classList.add("green-glow");
-  setTimeout(function () {
-    userChoice_div.classList.remove("green-glow");
-  }, 500);
+  setTimeout(() => userChoice_div.classList.remove("green-glow"), 500);
 }
 
 function lose(userChoice, computerChoice) {
@@ -46,9 +44,7 @@ function lose(userChoice, computerChoice) {
     computerChoice
   )}. You lost!`;
   userChoice_div.classList.add("red-glow");
-  setTimeout(function () {
-    userChoice_div.classList.remove("red-glow");
-  }, 500);
+  setTimeout(() => userChoice_div.classList.remove("red-glow"), 500);
 }
 
 function tie(userChoice, computerChoice) {
@@ -57,9 +53,7 @@ function tie(userChoice, computerChoice) {
     computerChoice
   )}. It's a tie!`;
   userChoice_div.classList.add("grey-glow");
-  setTimeout(function () {
-    userChoice_div.classList.remove("grey-glow");
-  }, 500);
+  setTimeout(() => userChoice_div.classList.remove("grey-glow"), 500);
 }
 
 function game(userChoice) {
@@ -84,15 +78,9 @@ function game(userChoice) {
 }
 
 function main() {
-  rock_div.addEventListener("click", function () {
-    game("rock");
-  });
-  paper_div.addEventListener("click", function () {
-    game("paper");
-  });
-  scissors_div.addEventListener("click", function () {
-    game("scissors");
-  });
+  rock_div.addEventListener("click", () => game("rock"));
+  paper_div.addEventListener("click", () => game("paper"));
+  scissors_div.addEventListener("click", () => game("scissors"));
 }
 
 main();
