@@ -7,46 +7,46 @@ window.addEventListener("DOMContentLoaded", (e) => {
     return options[Math.floor(Math.random() * options.length)];
   }
 
-  // function game() {
-  //   //while (playerScore < 5 && computerScore < 5) {
-  //     let playerSelect = prompt("Choose: ROCK, PAPER, or SCISSORS");
-  //     if (!playerSelect) {
-  //       alert("Hey don't leave me :(");
-  //       return;
-  //     }
-  //     let playerSelection =
-  //       playerSelect.charAt(0).toUpperCase() +
-  //       playerSelect.slice(1).toLowerCase();
-  //     if (
-  //       playerSelection !== "Rock" &&
-  //       playerSelection !== "Paper" &&
-  //       playerSelection !== "Scissors"
-  //     ) {
-  //       alert("nope, try again.");
-  //       continue;
-  //     }
-  //     const computerSelection = getComputerChoice();
-  //     alert(playRound(playerSelection, computerSelection));
-  //   }
-  //    if (playerScore === 5) {
-  //      alert("You won the game!");
-  //    } else if (computerScore === 5) {
-  //      alert("You lost the game. Better luck next time.");
-  //    }
-  // }
-
-  function playRound(playerSelection, computerSelection) {
-    function clickListener(event) {
-      if (event.target.tagName != "BUTTON") {
+  function game() {
+    while (playerScore < 5 && computerScore < 5) {
+      let playerSelect = prompt("Choose: ROCK, PAPER, or SCISSORS");
+      if (!playerSelect) {
+        alert("Hey don't leave me :(");
         return;
       }
-      const playerSelection = event.target.id;
+      let playerSelection =
+        playerSelect.charAt(0).toUpperCase() +
+        playerSelect.slice(1).toLowerCase();
+      if (
+        playerSelection !== "Rock" &&
+        playerSelection !== "Paper" &&
+        playerSelection !== "Scissors"
+      ) {
+        alert("nope, try again.");
+        continue;
+      }
       const computerSelection = getComputerChoice();
-      playRound(playerSelection, computerSelection);
+      alert(playRound(playerSelection, computerSelection));
     }
-    document
-      .getElementById(".buttons")
-      .addEventListener("click", clickListener);
+    if (playerScore === 5) {
+      alert("You won the game!");
+    } else if (computerScore === 5) {
+      alert("You lost the game. Better luck next time.");
+    }
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    // function clickListener(event) {
+    //   if (event.target.tagName != "BUTTON") {
+    //     return;
+    //   }
+    //   const playerSelection = event.target.id;
+    //   const computerSelection = getComputerChoice();
+    //   playRound(playerSelection, computerSelection);
+    // }
+    // document
+    //   .getElementById(".buttons")
+    //   .addEventListener("click", clickListener);
 
     if (playerSelection === computerSelection) {
       return `It's a tie! Score: ${playerScore}:${computerScore}`;
@@ -62,9 +62,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
       return `You lost this round! ${computerSelection} beats ${playerSelection}! Score: ${playerScore}:${computerScore}`;
     }
   }
+
   game();
 });
-
 //to test:
 // let result = getComputerChoice();
 // console.log(result);
@@ -74,4 +74,3 @@ window.addEventListener("DOMContentLoaded", (e) => {
 //need to fix tie mechanic it is case sensitive atm
 
 //if you hit okay it add a default otherwise it goes without you
-//now even banana counts against you smh
